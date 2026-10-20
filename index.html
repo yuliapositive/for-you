@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Наша годовщина 💙</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0a0e27 0%, #131a3a 50%, #1e2a5a 100%);
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+    padding: 20px;
+  }
+  .card {
+    text-align: center;
+    padding: 55px 40px;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(100, 180, 255, 0.2);
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(80, 150, 255, 0.1);
+    max-width: 560px;
+    animation: fadeIn 1.5s ease;
+    z-index: 2;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  h1 {
+    font-size: 2.2rem;
+    background: linear-gradient(135deg, #64b4ff, #4ecdc4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+  }
+  .subtitle {
+    color: #8899bb;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+  }
+  .counter {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 28px 0;
+    flex-wrap: wrap;
+  }
+  .counter div {
+    background: rgba(100, 180, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px 16px;
+    min-width: 74px;
+    border: 1px solid rgba(100, 180, 255, 0.25);
+  }
+  .counter span {
+    display: block;
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+  }
+  .counter small {
+    font-size: 0.68rem;
+    color: #6a7a9a;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  p {
+    color: #c5d0e8;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    margin-top: 15px;
+  }
+  
+  /* Стили для кнопки-ссылки */
+  .btn-link {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 14px 34px;
+    font-size: 1rem;
+    color: #fff;
+    background: linear-gradient(135deg, #4a90e2, #4ecdc4);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .btn-link:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(78, 205, 196, 0.4);
+  }
+
+  .heart {
+    position: fixed;
+    top: -50px;
+    color: #64b4ff;
+    font-size: 18px;
+    animation: fall linear infinite;
+    opacity: 0.35;
+    z-index: 1;
+  }
+  @keyframes fall {
+    to { transform: translateY(110vh) rotate(360deg); }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>с праздником, любимый 💙</h1>
+  <div class="subtitle">26 ноября · наша дата</div>
+  <div class="counter" id="counter"></div>
+  <p>с 26 ноября ты стал частью моей жизни —<br>и с тех пор ты стал самым родным.</p>
+  
+  <!-- Кнопка теперь является ссылкой на вторую страницу -->
+  <a href="letter.html" class="btn-link">тык послание 💌</a>
+</div>
+
+<script>
+  const startDate = new Date("2025-11-26T00:00:00");
+
+  function updateCounter() {
+    const now = new Date();
+    const diff = now - startDate;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById('counter').innerHTML = `
+      <div><span>${days}</span><small>дней</small></div>
+      <div><span>${hours}</span><small>часов</small></div>
+      <div><span>${minutes}</span><small>минут</small></div>
+      <div><span>${seconds}</span><small>секунд</small></div>
+    `;
+  }
+  updateCounter();
+  setInterval(updateCounter, 1000);
+
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerHTML = '♥';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (Math.random() * 4 + 7) + 's';
+    heart.style.fontSize = (Math.random() * 14 + 12) + 'px';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 11000);
+  }
+  setInterval(createHeart, 800);
+</script>
+
+</body>
+</html>

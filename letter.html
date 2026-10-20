@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Послание для тебя 💌</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0a0e27 0%, #131a3a 50%, #1e2a5a 100%);
+    font-family: 'Segoe UI', sans-serif;
+    /* Убираем overflow: hidden, чтобы можно было скроллить текст на телефонах */
+    overflow-y: auto; 
+    overflow-x: hidden;
+    padding: 40px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .card {
+    padding: 50px 40px;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(100, 180, 255, 0.2);
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(80, 150, 255, 0.1);
+    max-width: 600px;
+    width: 100%;
+    animation: fadeIn 1.5s ease;
+    z-index: 2;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    background: linear-gradient(135deg, #64b4ff, #4ecdc4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+
+  p {
+    color: #c5d0e8;
+    line-height: 1.9;
+    font-size: 1.05rem;
+    margin-bottom: 18px;
+    text-align: left;
+  }
+  
+  /* Выделяем важные мысли */
+  .highlight {
+    color: #fff;
+    font-style: italic;
+  }
+
+  .signature {
+    text-align: right;
+    color: #4ecdc4;
+    font-style: italic;
+    margin-top: 35px;
+    font-size: 1.2rem;
+  }
+
+  /* Кнопка "Назад" */
+  .back-link {
+    display: block;
+    text-align: center;
+    margin-top: 40px;
+    color: #8899bb;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+  }
+  .back-link:hover {
+    color: #64b4ff;
+  }
+
+  .heart {
+    position: fixed;
+    top: -50px;
+    color: #64b4ff;
+    font-size: 18px;
+    animation: fall linear infinite;
+    opacity: 0.35;
+    z-index: 1;
+    pointer-events: none;
+  }
+  @keyframes fall {
+    to { transform: translateY(110vh) rotate(360deg); }
+  }
+
+  @media (max-width: 480px) {
+    .card { padding: 35px 20px; }
+    h2 { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h2>дорогой,</h2>
+  
+  <p>сегодня ровно год, как мы вместе. и знаешь, за это время я поняла простую вещь: <span class="highlight">счастье — это не что-то большое и громкое.</span> оно тихое. оно в твоих сообщениях, в наших разговорах, в том, как ты слушаешь, когда я делюсь чем-то важным — и не только.</p>
+  
+  <p>Спасибо, что ты рядом. спасибо за твоё тепло, за твой смех, за то, что ты есть. я не знаю, что будет дальше, но одно знаю точно — рядом с тобой я хочу быть и завтра, и через месяц, и через год. в общем, <span class="highlight">всегда.</span></p>
+  
+  <p>надеюсь, это навсегда! 💙</p>
+  
+  <p class="signature">— твоя золотуля ^^</p>
+
+  <a href="index.html" class="back-link">← вернуться к таймеру</a>
+</div>
+
+<script>
+  // Сердечки падают и здесь для атмосферы
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerHTML = '♥';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (Math.random() * 4 + 7) + 's';
+    heart.style.fontSize = (Math.random() * 14 + 12) + 'px';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 11000);
+  }
+  setInterval(createHeart, 800);
+</script>
+
+</body>
+</html>
