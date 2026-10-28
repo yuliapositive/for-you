@@ -6,16 +6,23 @@
 <title>Наша годовщина 💙</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
   body {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #0a0e27 0%, #131a3a 50%, #1e2a5a 100%);
+    justify-content: center; /* Центрируем контент, так как подсказку убрали */
+    background: linear-gradient(180deg, #0a0e27 0%, #131a3a 40%, #1e2a5a 100%);
+    background-attachment: fixed;
     font-family: 'Segoe UI', sans-serif;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
     padding: 20px;
   }
+
   .card {
     text-align: center;
     padding: 55px 40px;
@@ -25,13 +32,17 @@
     border-radius: 24px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(80, 150, 255, 0.1);
     max-width: 560px;
+    width: 100%;
     animation: fadeIn 1.5s ease;
+    position: relative;
     z-index: 2;
   }
+
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
   h1 {
     font-size: 2.2rem;
     background: linear-gradient(135deg, #64b4ff, #4ecdc4);
@@ -40,6 +51,7 @@
     -webkit-text-fill-color: transparent;
     margin-bottom: 12px;
   }
+
   .subtitle {
     color: #8899bb;
     font-size: 0.9rem;
@@ -47,6 +59,7 @@
     text-transform: uppercase;
     margin-bottom: 25px;
   }
+
   .counter {
     display: flex;
     justify-content: center;
@@ -54,6 +67,7 @@
     margin: 28px 0;
     flex-wrap: wrap;
   }
+
   .counter div {
     background: rgba(100, 180, 255, 0.08);
     border-radius: 12px;
@@ -61,6 +75,7 @@
     min-width: 74px;
     border: 1px solid rgba(100, 180, 255, 0.25);
   }
+
   .counter span {
     display: block;
     font-size: 1.7rem;
@@ -68,21 +83,23 @@
     color: #fff;
     font-variant-numeric: tabular-nums;
   }
+
   .counter small {
     font-size: 0.68rem;
     color: #6a7a9a;
     text-transform: uppercase;
     letter-spacing: 1px;
   }
+
   p {
     color: #c5d0e8;
     line-height: 1.8;
     font-size: 1.05rem;
     margin-top: 15px;
   }
-  
-  /* Стили для кнопки-ссылки */
-  .btn-link {
+
+  /* Теперь это ссылка, стилизованная под кнопку */
+  .btn {
     display: inline-block;
     margin-top: 28px;
     padding: 14px 34px;
@@ -96,7 +113,8 @@
     font-weight: 600;
     text-decoration: none;
   }
-  .btn-link:hover {
+
+  .btn:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 30px rgba(78, 205, 196, 0.4);
   }
@@ -109,22 +127,31 @@
     animation: fall linear infinite;
     opacity: 0.35;
     z-index: 1;
+    pointer-events: none;
   }
+
   @keyframes fall {
     to { transform: translateY(110vh) rotate(360deg); }
+  }
+
+  body::-webkit-scrollbar { width: 10px; }
+  body::-webkit-scrollbar-track { background: #0a0e27; }
+  body::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #4a90e2, #4ecdc4);
+    border-radius: 10px;
   }
 </style>
 </head>
 <body>
 
 <div class="card">
-  <h1>с праздником, любимый 💙</h1>
+  <h1>С годовщиной, любимый 💙</h1>
   <div class="subtitle">26 ноября · наша дата</div>
   <div class="counter" id="counter"></div>
-  <p>с 26 ноября ты стал частью моей жизни —<br>и с тех пор ты стал самым родным.</p>
+  <p>С 26 ноября ты стал частью моей жизни —<br>и с тех пор каждый день стал теплее.</p>
   
-  <!-- Кнопка теперь является ссылкой на вторую страницу -->
-  <a href="letter.html" class="btn-link">тык послание 💌</a>
+  <!-- Ведём на страницу с письмом -->
+  <a href="letter.html" class="btn">Открыть послание 💌</a>
 </div>
 
 <script>
